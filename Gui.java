@@ -60,6 +60,26 @@ public class Gui {
         return r;
     }
 
+    public JLabel createJLabel() {
+        JLabel label = new JLabel();
+        label.setVisible(visible);
+        label.setSize(size, size / 4);
+        label.setHorizontalAlignment(JLabel.CENTER);
+        label.setLocation(location, locationIncrement);
+
+        return label;
+    }
+
+    public JTextField createJTextField() {
+        JTextField field = new JTextField(20);
+        field.setVisible(visible);
+        field.setSize(size, size / 4);
+        field.setHorizontalAlignment(JTextField.CENTER);
+        field.setLocation(location, locationIncrement);
+
+        return field;
+    }
+
     public JTextArea createInstruction() {
         JTextArea text = new JTextArea(name);
         text.setVisible(visible);

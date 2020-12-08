@@ -7,6 +7,8 @@ public class Main {
     public User user;
     public Gui screen;
     public Gui button1;
+    public Gui label1;
+    public Gui textField1;
     public Gui returnButton;
     public Gui wordField;
     public FileLoader loader;
@@ -16,6 +18,8 @@ public class Main {
     public Main() {
         user = new User("Guest", "Unknown");
         screen = new Gui("basicClicker", false, true, 400);
+        label1 = new Gui("", true, 200, 100, 25);
+        textField1 = new Gui("", true, 200, 100, 25);
         button1 = new Gui("Generic", true, 200, 100, 25);
         returnButton = new Gui("<", true, 50);
         wordField = new Gui("", true, 50);
@@ -111,8 +115,25 @@ public class Main {
 
         JFrame game = screen.createScreen();
 
+        label1.setLocationIncrement(1);
+        JLabel nameLbl = label1.createJLabel();
+        nameLbl.setText("Enter a username below");
+        game.add(nameLbl);
+
+        textField1.setLocationIncrement(2);
+        JTextField enterName = textField1.createJTextField();
+        game.add(enterName);
+
+        enterName.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                user.setName(enterName.getText());
+                user.setSaveName(enterName.getText());
+                enterName.setText("");
+            }
+        });
+
         button1.setName("Continue");
-        button1.setLocationIncrement(0);
+        button1.setLocationIncrement(3);
         JButton continuing = button1.createButton1();
         game.add(continuing);
 
@@ -124,7 +145,7 @@ public class Main {
         });
 
         button1.setName("Cancel");
-        button1.setLocationIncrement(1);
+        button1.setLocationIncrement(4);
         JButton cancel = button1.createButton1();
         game.add(cancel);
 
