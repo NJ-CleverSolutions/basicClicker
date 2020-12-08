@@ -195,11 +195,33 @@ public class Main {
     }
 
     public void gameSettings() {
-        return;
+
+        JFrame game = screen.createScreen();
+
+        JButton back = returnButton.createReturnButton();
+        game.add(back);
+
+        back.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                game.dispose();
+                settings();
+            }
+        });
     }
 
     public void userSettings() {
-        return;
+
+        JFrame user = screen.createScreen();
+
+        JButton back = returnButton.createReturnButton();
+        user.add(back);
+
+        back.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                user.dispose();
+                settings();
+            }
+        });
     }
 
     public void game() {
