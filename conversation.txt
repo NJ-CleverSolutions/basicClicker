@@ -1,0 +1,8 @@
+Current Jobs:
+ //write current jobs that need to be completed here
+ //write your name before a job to claim it
+
+Additional Jobs Consideration:
+
+ //write what jobs you still think need to be completed
+ //write your name before to validate and the final person can move it to current jobs
