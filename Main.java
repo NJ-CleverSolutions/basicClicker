@@ -51,33 +51,26 @@ public class Main {
 
         JFrame menu = screen.createScreen();
 
-        button1.setName("New Game");
+        button1.setName("Play");
         button1.setLocationIncrement(0);
-        JButton newGame = button1.createButton1();
-        menu.add(newGame);
+        JButton play = button1.createButton1();
+        menu.add(play);
 
-        newGame.addActionListener(new ActionListener() {
+        play.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                menu.dispose();
-                newGame();
-            }
-        });
 
-        button1.setName("Load Game");
-        button1.setLocationIncrement(1);
-        JButton loadGame = button1.createButton1();
-        menu.add(loadGame);
-
-        loadGame.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
                 menu.dispose();
-                loader.reading();
-                game();
+
+                if (user.getName().equals("Guest")) {
+                    newGame();
+                } else {
+                    game();
+                }
             }
         });
 
         button1.setName("Settings");
-        button1.setLocationIncrement(2);
+        button1.setLocationIncrement(1);
         JButton settings = button1.createButton1();
         menu.add(settings);
 
@@ -89,7 +82,7 @@ public class Main {
         });
 
         button1.setName("Credits");
-        button1.setLocationIncrement(3);
+        button1.setLocationIncrement(2);
         JButton credits = button1.createButton1();
         menu.add(credits);
 

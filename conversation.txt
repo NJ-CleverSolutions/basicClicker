@@ -1,4 +1,7 @@
 Current Jobs:
+
+    Nate: make gui resizeable without a setLayout
+
  //write current jobs that need to be completed here
  //write your name before a job to claim it
 
