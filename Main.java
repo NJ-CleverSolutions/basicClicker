@@ -212,6 +212,22 @@ public class Main {
 
         JFrame game = screen.createScreen();
 
+        button1.setName("Maximize");
+        button1.setLocationIncrement(0);
+        JButton max = button1.createButton1();
+        game.add(max);
+
+        max.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+
+                //String name, boolean resize, boolean visible, int sizeX, int sizeY
+                screen = new Gui("basicClicker", false, true, 0,0);
+                screen.setSizeX(screen.screenSizeX());
+                screen.setSizeY(screen.screenSizeY());
+                settings();
+            }
+        });
+
         JButton back = returnButton.createReturnButton();
         game.add(back);
 
