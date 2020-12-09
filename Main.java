@@ -5,43 +5,49 @@ import java.awt.event.ActionListener;
 public class Main {
 
     public User user;
-    public Gui screen;
+    public static Gui screen;
     public Gui button1;
     public Gui label1;
     public Gui textField1;
     public Gui returnButton;
     public Gui wordField;
+    public Gui clickMe;
+    public Gui menuBar;
+    public static JFrame gui; //hi bibi <3
     public FileLoader loader;
     public FileWriter saver;
     public static Main main = new Main();
 
     public Main() {
-        user = new User("Guest", "Unknown");
-        screen = new Gui("basicClicker", false, true, 400);
-        label1 = new Gui("", true, 200, 100, 25);
-        textField1 = new Gui("", true, 200, 100, 25);
-        button1 = new Gui("Generic", true, 200, 100, 25);
+        user = new User("Guest");
+        screen = new Gui("basicClicker", true, 800);
+        label1 = new Gui("", true, 200, 100);
+        textField1 = new Gui("", true, 200, 100);
+        button1 = new Gui("Generic", true, 200, 100);
         returnButton = new Gui("<", true, 50);
+        menuBar = new Gui("menuBar", true, 400, 0);
         wordField = new Gui("", true, 50);
+        clickMe = new Gui("Click me", true, 100, 100);
         loader = new FileLoader();
         saver = new FileWriter();
     }
 
     public static void main(String[] args) {
         main.titleScreen();
+        gui = screen.createScreen();
     }
 
     public void titleScreen() {
-        JFrame title = screen.createScreen();
 
         button1.setName("Start");
-        button1.setLocationIncrement(3);
         JButton start = button1.createButton1();
-        title.add(start);
+        start.setLocation(0,300);
+        gui.add(start);
 
         start.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                title.dispose();
+                gui.getContentPane().removeAll();
+                gui.repaint();
                 menuScreen();
             }
         });
@@ -49,17 +55,16 @@ public class Main {
 
     public void menuScreen() {
 
-        JFrame menu = screen.createScreen();
-
         button1.setName("Play");
-        button1.setLocationIncrement(0);
         JButton play = button1.createButton1();
-        menu.add(play);
+        play.setLocation(0,100);
+        gui.add(play);
 
         play.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
 
-                menu.dispose();
+                gui.getContentPane().removeAll();
+                gui.repaint();
 
                 if (user.getName().equals("Guest")) {
                     newGame();
@@ -70,35 +75,38 @@ public class Main {
         });
 
         button1.setName("Settings");
-        button1.setLocationIncrement(1);
         JButton settings = button1.createButton1();
-        menu.add(settings);
+        settings.setLocation(0,200);
+        gui.add(settings);
 
         settings.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                menu.dispose();
+                gui.getContentPane().removeAll();
+                gui.repaint();
                 settings();
             }
         });
 
         button1.setName("Credits");
-        button1.setLocationIncrement(2);
         JButton credits = button1.createButton1();
-        menu.add(credits);
+        credits.setLocation(0,300);
+        gui.add(credits);
 
         credits.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                menu.dispose();
+                gui.getContentPane().removeAll();
+                gui.repaint();
                 credits();
             }
         });
 
         JButton back = returnButton.createReturnButton();
-        menu.add(back);
+        gui.add(back);
 
         back.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                menu.dispose();
+                gui.getContentPane().removeAll();
+                gui.repaint();
                 titleScreen();
             }
         });
@@ -106,45 +114,40 @@ public class Main {
 
     public void newGame() {
 
-        JFrame game = screen.createScreen();
-
-        label1.setLocationIncrement(1);
         JLabel nameLbl = label1.createJLabel();
         nameLbl.setText("Enter a username below");
-        game.add(nameLbl);
+        gui.add(nameLbl);
 
-        textField1.setLocationIncrement(2);
         JTextField enterName = textField1.createJTextField();
-        game.add(enterName);
+        gui.add(enterName);
 
         enterName.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 user.setName(enterName.getText());
-                user.setSaveName(enterName.getText());
                 enterName.setText("");
             }
         });
 
         button1.setName("Continue");
-        button1.setLocationIncrement(3);
         JButton continuing = button1.createButton1();
-        game.add(continuing);
+        gui.add(continuing);
 
         continuing.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                game.dispose();
+                gui.getContentPane().removeAll();
+                gui.repaint();
                 game();
             }
         });
 
         button1.setName("Cancel");
-        button1.setLocationIncrement(4);
         JButton cancel = button1.createButton1();
-        game.add(cancel);
+        gui.add(cancel);
 
         cancel.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                game.dispose();
+                gui.getContentPane().removeAll();
+                gui.repaint();
                 menuScreen();
             }
         });
@@ -152,38 +155,37 @@ public class Main {
 
     public void settings() {
 
-        JFrame settings = screen.createScreen();
-
         button1.setName("Game Settings");
-        button1.setLocationIncrement(0);
         JButton game = button1.createButton1();
-        settings.add(game);
+        gui.add(game);
 
         game.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                settings.dispose();
+                gui.getContentPane().removeAll();
+                gui.repaint();
                 gameSettings();
             }
         });
 
         button1.setName("User Settings");
-        button1.setLocationIncrement(1);
         JButton user = button1.createButton1();
-        settings.add(user);
+        gui.add(user);
 
         user.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                settings.dispose();
+                gui.getContentPane().removeAll();
+                gui.repaint();
                 userSettings();
             }
         });
 
         JButton back = returnButton.createReturnButton();
-        settings.add(back);
+        gui.add(back);
 
         back.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                settings.dispose();
+                gui.getContentPane().removeAll();
+                gui.repaint();
                 menuScreen();
             }
         });
@@ -191,18 +193,17 @@ public class Main {
 
     public void credits() {
 
-        JFrame credits = screen.createScreen();
-
         wordField.setName("Sleepy Lizard Studios");
         JTextArea instruct = wordField.createInstruction();
-        credits.add(instruct);
+        gui.add(instruct);
 
         JButton back = returnButton.createReturnButton();
-        credits.add(back);
+        gui.add(back);
 
         back.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                credits.dispose();
+                gui.getContentPane().removeAll();
+                gui.repaint();
                 menuScreen();
             }
         });
@@ -210,30 +211,13 @@ public class Main {
 
     public void gameSettings() {
 
-        JFrame game = screen.createScreen();
-
-        button1.setName("Maximize");
-        button1.setLocationIncrement(0);
-        JButton max = button1.createButton1();
-        game.add(max);
-
-        max.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-
-                //String name, boolean resize, boolean visible, int sizeX, int sizeY
-                screen = new Gui("basicClicker", false, true, 0,0);
-                screen.setSizeX(screen.screenSizeX());
-                screen.setSizeY(screen.screenSizeY());
-                settings();
-            }
-        });
-
         JButton back = returnButton.createReturnButton();
-        game.add(back);
+        gui.add(back);
 
         back.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                game.dispose();
+                gui.getContentPane().removeAll();
+                gui.repaint();
                 settings();
             }
         });
@@ -241,14 +225,13 @@ public class Main {
 
     public void userSettings() {
 
-        JFrame user = screen.createScreen();
-
         JButton back = returnButton.createReturnButton();
-        user.add(back);
+        gui.add(back);
 
         back.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                user.dispose();
+                gui.getContentPane().removeAll();
+                gui.repaint();
                 settings();
             }
         });
@@ -256,19 +239,31 @@ public class Main {
 
     public void game() {
 
-        JFrame game = screen.createScreen();
-        game.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+        gui.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+
+        JPanel menu = menuBar.createMenuBar();
+        gui.add(menu);
 
         JButton save = returnButton.createReturnButton();
-        game.add(save);
+        menu.add(save);
 
         save.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                game.dispose();
+                gui.getContentPane().removeAll();
+                gui.repaint();
                 saver.save();
                 menuScreen();
             }
         });
-    }
 
+        JButton storeButton = button1.createButton1();
+        storeButton.setText("STORE");
+        menu.add(storeButton);
+
+        storeButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+    }
 }
