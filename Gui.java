@@ -1,11 +1,9 @@
 import javax.swing.*;
 import java.awt.*;
-import java.time.chrono.JapaneseChronology;
 
 public class Gui {
 
     public String name;
-    public boolean resize;
     public boolean visible;
     public int size;
     public int location;
@@ -16,7 +14,6 @@ public class Gui {
         this.name = name;
         this.visible = visible;
         this.location = location;
-        this.locationIncrement = locationIncrement;
         this.size = size;
     }
 
@@ -41,7 +38,6 @@ public class Gui {
         JButton button = new JButton(name);
         button.setVisible(visible);
         button.setSize(800, 100);
-        button.setLocation(location, locationIncrement);
 
         return button;
     }
@@ -65,12 +61,20 @@ public class Gui {
         return label;
     }
 
+    public JPanel createJPanel()
+    {
+        JPanel panel = new JPanel();
+        panel.setVisible(visible);
+        panel.setSize(size, size);
+
+        return panel;
+    }
+
     public JTextField createJTextField() {
         JTextField field = new JTextField(20);
         field.setVisible(visible);
-        field.setSize(size, size / 4);
+        field.setSize(size, size);
         field.setHorizontalAlignment(JTextField.CENTER);
-        field.setLocation(location, locationIncrement);
 
         return field;
     }
@@ -84,23 +88,15 @@ public class Gui {
         return text;
     }
 
-    public JPanel createMenuBar() {
-        JPanel menuBar = new JPanel();
+    public JMenuBar createMenuBar() {
+        JMenuBar menuBar= new JMenuBar();
+
         menuBar.setVisible(visible);
-        menuBar.setSize(size, size);
-        menuBar.setLocation(0, 0);
+        menuBar.setSize(800, 100);
+        menuBar.setLocation(0, 650);
         menuBar.setBackground(Color.GRAY);
 
         return menuBar;
-    }
-
-    public JButton createClickMeButton() {
-        JButton clickMe = new JButton(name);
-        clickMe.setVisible(visible);
-        clickMe.setSize(size, size / 4);
-        clickMe.setLocation(location, locationIncrement);
-
-        return clickMe;
     }
 
     public void setName(String name) {

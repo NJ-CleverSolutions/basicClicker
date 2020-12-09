@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -13,9 +14,11 @@ public class Main {
     public Gui wordField;
     public Gui clickMe;
     public Gui menuBar;
-    public static JFrame gui; //hi bibi <3
+    public Gui panel;
+    public static JFrame gui;
     public FileLoader loader;
     public FileWriter saver;
+    public Game game;
     public static Main main = new Main();
 
     public Main() {
@@ -28,13 +31,15 @@ public class Main {
         menuBar = new Gui("menuBar", true, 400, 0);
         wordField = new Gui("", true, 50);
         clickMe = new Gui("Click me", true, 100, 100);
+        panel = new Gui("0.00", true, 100);
+        game = new Game();
         loader = new FileLoader();
         saver = new FileWriter();
     }
 
     public static void main(String[] args) {
-        main.titleScreen();
         gui = screen.createScreen();
+        main.titleScreen();
     }
 
     public void titleScreen() {
@@ -67,7 +72,7 @@ public class Main {
                 gui.repaint();
 
                 if (user.getName().equals("Guest")) {
-                    newGame();
+                    play();
                 } else {
                     game();
                 }
@@ -112,7 +117,7 @@ public class Main {
         });
     }
 
-    public void newGame() {
+    public void play() {
 
         JLabel nameLbl = label1.createJLabel();
         nameLbl.setText("Enter a username below");
@@ -130,6 +135,7 @@ public class Main {
 
         button1.setName("Continue");
         JButton continuing = button1.createButton1();
+        continuing.setLocation(0,550);
         gui.add(continuing);
 
         continuing.addActionListener(new ActionListener() {
@@ -142,6 +148,7 @@ public class Main {
 
         button1.setName("Cancel");
         JButton cancel = button1.createButton1();
+        cancel.setLocation(0,650);
         gui.add(cancel);
 
         cancel.addActionListener(new ActionListener() {
@@ -195,6 +202,7 @@ public class Main {
 
         wordField.setName("Sleepy Lizard Studios");
         JTextArea instruct = wordField.createInstruction();
+        instruct.setEnabled(false);
         gui.add(instruct);
 
         JButton back = returnButton.createReturnButton();
@@ -241,28 +249,41 @@ public class Main {
 
         gui.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 
-        JPanel menu = menuBar.createMenuBar();
-        gui.add(menu);
+        JMenuBar jMenuBar = menuBar.createMenuBar();
+        JMenu menu = new JMenu("Menu");
 
-        JButton save = returnButton.createReturnButton();
-        menu.add(save);
+        JMenuItem option1 = new JMenuItem("Option 1");
+        JMenuItem option2 = new JMenuItem("Option 2");
+        JMenuItem option3 = new JMenuItem("Option 3");
+        JMenuItem option4 = new JMenuItem("Option 4");
+        JMenuItem option5 = new JMenuItem("Option 5");
+        menu.add(option1).add(option2);
+        menu.add(option3).add(option4);
+        menu.add(option5);
 
-        save.addActionListener(new ActionListener() {
+        jMenuBar.add(menu);
+
+        gui.add(jMenuBar);
+
+        JTextField netWorth = wordField.createJTextField();
+        netWorth.setEditable(false);
+        netWorth.setText("$ " + game.getNetWorth());
+        netWorth.setFont(new Font("Arial", Font.BOLD, 18));
+        netWorth.setSize(800,20);
+        netWorth.setLocation(0, 0);
+        gui.add(netWorth);
+
+        button1.setName("Click Me Linus");
+        JButton main = button1.createButton1();
+        main.setLocation(0,550);
+        gui.add(main);
+
+        main.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                gui.getContentPane().removeAll();
+                game.setNetWorth(game.getIncrementClick());
+                netWorth.setText("$ " + game.getNetWorth());
+                netWorth.repaint();
                 gui.repaint();
-                saver.save();
-                menuScreen();
-            }
-        });
-
-        JButton storeButton = button1.createButton1();
-        storeButton.setText("STORE");
-        menu.add(storeButton);
-
-        storeButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-
             }
         });
     }
