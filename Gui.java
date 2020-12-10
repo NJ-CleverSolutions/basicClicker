@@ -6,16 +6,7 @@ public class Gui {
     public String name;
     public boolean visible;
     public int size;
-    public int location;
-    public int locationIncrement;
     public JFrame screen;
-
-    public Gui(String name, boolean visible, int size, int location) {
-        this.name = name;
-        this.visible = visible;
-        this.location = location;
-        this.size = size;
-    }
 
     public Gui(String name, boolean visible, int size) {
         this.name = name;
@@ -25,6 +16,7 @@ public class Gui {
 
     public JFrame createScreen() {
         screen = new JFrame(name);
+        screen.getContentPane().setBackground(Color.decode("#6C5137"));
         screen.setLayout(null);
         screen.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         screen.setResizable(false);
@@ -56,18 +48,8 @@ public class Gui {
         label.setVisible(visible);
         label.setSize(size, size / 4);
         label.setHorizontalAlignment(JLabel.CENTER);
-        label.setLocation(location, locationIncrement);
 
         return label;
-    }
-
-    public JPanel createJPanel()
-    {
-        JPanel panel = new JPanel();
-        panel.setVisible(visible);
-        panel.setSize(size, size);
-
-        return panel;
     }
 
     public JTextField createJTextField() {
@@ -97,6 +79,31 @@ public class Gui {
         menuBar.setBackground(Color.GRAY);
 
         return menuBar;
+    }
+
+    public JMenu createMenu() {
+        JMenu menu = new JMenu("Menu");
+        menu.setVisible(visible);
+        JMenuItem option1 = new JMenuItem("Back");
+        JMenuItem option2 = new JMenuItem("Save Game");
+        JMenuItem option3 = new JMenuItem("Option 3");
+        JMenuItem option4 = new JMenuItem("Option 4");
+        JMenuItem option5 = new JMenuItem("Upgrades & Buffs");
+        menu.add(option1);
+        menu.add(option2);
+        menu.add(option3);
+        menu.add(option4);
+        menu.add(option5);
+
+        return menu;
+    }
+
+    public JPanel createJPanel() {
+        JPanel panel = new JPanel();
+        panel.setVisible(true);
+        panel.setSize(size, size);
+
+        return panel;
     }
 
     public void setName(String name) {
