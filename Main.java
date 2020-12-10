@@ -27,8 +27,8 @@ public class Main {
     public Game game;
     public static Main main = new Main();
     public int nameCurrent = 0;
-    public Font buttonFont = new Font("Arial", Font.BOLD, 30);
-    public Font arrowButtonFont = new Font("Arial", Font.BOLD, 20);
+    public Font largeLabelFont = new Font("Arial", Font.PLAIN, 30);
+    public Font smallLabelFont = new Font("Arial", Font.PLAIN, 20);
 
     public Main() {
         user = new User("Guest");
@@ -55,10 +55,7 @@ public class Main {
     public void tittyScreen() {
 
         button1.setName("START");
-        JButton start = button1.createButton1();
-        start.setBackground(Color.decode("#4D1B58"));
-        start.setForeground(Color.decode("#FF6100"));
-        start.setFont(buttonFont);
+        JButton start = button1.createButton();
         start.setSize(820,100);
         start.setLocation(-10,300);
         gui.add(start);
@@ -86,10 +83,7 @@ public class Main {
     public void menuScreen() {
 
         button1.setName("Play");
-        JButton play = button1.createButton1();
-        play.setBackground(Color.decode("#4D1B58"));
-        play.setForeground(Color.decode("#FF6100"));
-        play.setFont(buttonFont);
+        JButton play = button1.createButton();
         play.setLocation(0,100);
         gui.add(play);
 
@@ -108,10 +102,7 @@ public class Main {
         });
 
         button1.setName("Settings");
-        JButton settings = button1.createButton1();
-        settings.setBackground(Color.decode("#4D1B58"));
-        settings.setForeground(Color.decode("#FF6100"));
-        settings.setFont(buttonFont);
+        JButton settings = button1.createButton();
         settings.setLocation(0,200);
         gui.add(settings);
 
@@ -124,10 +115,7 @@ public class Main {
         });
 
         button1.setName("Credits");
-        JButton credits = button1.createButton1();
-        credits.setBackground(Color.decode("#4D1B58"));
-        credits.setForeground(Color.decode("#FF6100"));
-        credits.setFont(buttonFont);
+        JButton credits = button1.createButton();
         credits.setLocation(0,300);
         gui.add(credits);
 
@@ -140,9 +128,6 @@ public class Main {
         });
 
         JButton back = returnButton.createReturnButton();
-        back.setBackground(Color.decode("#4D1B58"));
-        back.setForeground(Color.decode("#FF6100"));
-        back.setFont(arrowButtonFont);
         gui.add(back);
 
         back.addActionListener(new ActionListener() {
@@ -161,27 +146,30 @@ public class Main {
 
         JLabel nameLabel = label1.createJLabel();
         nameLabel.setText("Select Your Agent:");
+        nameLabel.setFont(largeLabelFont);
+        nameLabel.setForeground(Color.decode("#FF6100"));
         nameLabel.setSize(800,50);
         nameLabel.setLocation(0,0);
         gui.add(nameLabel);
 
         JLabel agentName = label1.createJLabel();
         agentName.setText("Agent Name: " + agents[nameCurrent]);
+        agentName.setFont(smallLabelFont);
+        agentName.setForeground(Color.decode("#FF6100"));
         agentName.setSize(800, 50);
         agentName.setLocation(0,50);
         gui.add(agentName);
 
         JLabel agentCompany = label1.createJLabel();
         agentCompany.setText("Agent Company: " + agentsCompany[nameCurrent]);
+        agentCompany.setFont(smallLabelFont);
+        agentCompany.setForeground(Color.decode("#FF6100"));
         agentCompany.setSize(800, 50);
         agentCompany.setLocation(0,100);
         gui.add(agentCompany);
 
         button1.setName("<");
-        JButton left = button1.createButton1();
-        left.setBackground(Color.decode("#4D1B58"));
-        left.setForeground(Color.decode("#FF6100"));
-        left.setFont(arrowButtonFont);
+        JButton left = button1.createButton();
         left.setSize(50,650);
         left.setLocation(0,0);
         gui.add(left);
@@ -205,10 +193,7 @@ public class Main {
         });
 
         button1.setName(">");
-        JButton right = button1.createButton1();
-        right.setBackground(Color.decode("#4D1B58"));
-        right.setForeground(Color.decode("#FF6100"));
-        right.setFont(arrowButtonFont);
+        JButton right = button1.createButton();
         right.setSize(50,650);
         right.setLocation(737,0);
         gui.add(right);
@@ -232,10 +217,7 @@ public class Main {
         });
 
         button1.setName("Submit");
-        JButton submit = button1.createButton1();
-        submit.setBackground(Color.decode("#4D1B58"));
-        submit.setForeground(Color.decode("#FF6100"));
-        submit.setFont(buttonFont);
+        JButton submit = button1.createButton();
         submit.setLocation(0,650);
         gui.add(submit);
 
@@ -253,10 +235,7 @@ public class Main {
     public void settings() {
 
         button1.setName("Game Settings");
-        JButton game = button1.createButton1();
-        game.setBackground(Color.decode("#4D1B58"));
-        game.setForeground(Color.decode("#FF6100"));
-        game.setFont(buttonFont);
+        JButton game = button1.createButton();
         game.setLocation(0,100);
         gui.add(game);
 
@@ -269,10 +248,7 @@ public class Main {
         });
 
         button1.setName("User Settings");
-        JButton user = button1.createButton1();
-        user.setBackground(Color.decode("#4D1B58"));
-        user.setForeground(Color.decode("#FF6100"));
-        user.setFont(buttonFont);
+        JButton user = button1.createButton();
         user.setLocation(0,200);
         gui.add(user);
 
@@ -285,9 +261,6 @@ public class Main {
         });
 
         JButton back = returnButton.createReturnButton();
-        back.setBackground(Color.decode("#4D1B58"));
-        back.setForeground(Color.decode("#FF6100"));
-        back.setFont(arrowButtonFont);
         back.setSize(50,50);
         back.setLocation(0,0);
         gui.add(back);
@@ -312,9 +285,6 @@ public class Main {
         gui.add(credits);
 
         JButton back = returnButton.createReturnButton();
-        back.setBackground(Color.decode("#4D1B58"));
-        back.setForeground(Color.decode("#FF6100"));
-        back.setFont(arrowButtonFont);
         back.setSize(50,50);
         back.setLocation(0,0);
         gui.add(back);
@@ -331,9 +301,6 @@ public class Main {
     public void gameSettings() {
 
         JButton back = returnButton.createReturnButton();
-        back.setBackground(Color.decode("#4D1B58"));
-        back.setForeground(Color.decode("#FF6100"));
-        back.setFont(arrowButtonFont);
         gui.add(back);
 
         back.addActionListener(new ActionListener() {
@@ -348,9 +315,6 @@ public class Main {
     public void userSettings() {
 
         JButton back = returnButton.createReturnButton();
-        back.setBackground(Color.decode("#4D1B58"));
-        back.setForeground(Color.decode("#FF6100"));
-        back.setFont(arrowButtonFont);
         gui.add(back);
 
         back.addActionListener(new ActionListener() {
@@ -385,10 +349,7 @@ public class Main {
         gui.add(netWorth);
 
         button1.setName("Click Me Linus");
-        JButton main = button1.createButton1();
-        main.setBackground(Color.decode("#4D1B58"));
-        main.setForeground(Color.decode("#FF6100"));
-        main.setFont(buttonFont);
+        JButton main = button1.createButton();
         main.setLocation(0,550);
         gui.add(main);
 

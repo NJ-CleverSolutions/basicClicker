@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 public class Gui {
 
@@ -7,6 +9,8 @@ public class Gui {
     public boolean visible;
     public int size;
     public JFrame screen;
+    public Font arrowButtonFont = new Font("Arial", Font.BOLD, 20);
+    public Font buttonFont = new Font("Arial", Font.BOLD, 30);
 
     public Gui(String name, boolean visible, int size) {
         this.name = name;
@@ -26,20 +30,97 @@ public class Gui {
         return screen;
     }
 
-    public JButton createButton1() {
+    public JButton createButton() {
         JButton button = new JButton(name);
         button.setVisible(visible);
         button.setSize(800, 100);
+        button.setBackground(Color.decode("#4D1B58"));
+        button.setForeground(Color.decode("#FF6100"));
+        button.setFont(buttonFont);
+        button.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                button.setBackground(Color.decode("#4D1B58"));
+                button.setForeground(Color.decode("#FF6100"));
+                button.repaint();
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                button.setBackground(Color.decode("#4D1B58"));
+                button.setForeground(Color.decode("#FF6100"));
+                button.repaint();
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                button.setBackground(Color.decode("#4D1B58"));
+                button.setForeground(Color.decode("#FF6100"));
+                button.repaint();
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                button.setBackground(Color.decode("#4D1B58"));
+                button.setForeground(Color.decode("#FF6100"));
+                button.repaint();
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                button.setBackground(Color.decode("#4D1B58"));
+                button.setForeground(Color.decode("#FF6100"));
+                button.repaint();
+            }
+        });
 
         return button;
     }
 
     public JButton createReturnButton() {
         JButton r = new JButton(name);
+        r.setBackground(Color.decode("#4D1B58"));
+        r.setForeground(Color.decode("#FF6100"));
+        r.setFont(arrowButtonFont);
         r.setVisible(visible);
         r.setSize(size, size);
         r.setLocation(0, 0);
+        r.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                r.setBackground(Color.decode("#4D1B58"));
+                r.setForeground(Color.decode("#FF6100"));
+                r.repaint();
+            }
 
+            @Override
+            public void mousePressed(MouseEvent e) {
+                r.setBackground(Color.decode("#4D1B58"));
+                r.setForeground(Color.decode("#FF6100"));
+                r.repaint();
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                r.setBackground(Color.decode("#4D1B58"));
+                r.setForeground(Color.decode("#FF6100"));
+                r.repaint();
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                r.setBackground(Color.decode("#4D1B58"));
+                r.setForeground(Color.decode("#FF6100"));
+                r.repaint();
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                r.setBackground(Color.decode("#4D1B58"));
+                r.setForeground(Color.decode("#FF6100"));
+                r.repaint();
+            }
+        });
         return r;
     }
 
